@@ -8,9 +8,9 @@
 
 ## API functionalities
 
-#### Bookmarking
+#### BOOKMARKING
 
-1. Create Bookmark
+1. CREATE BOOKMARK
   
     **endpoint:** /api/bookmarks/
     
@@ -23,7 +23,7 @@
     + tagId (string)
 
     
-2. Delete Bookmark
+2. DELETE BOOKMARK
   
     **endpoint:** /api/bookmarks/:id
     
@@ -36,7 +36,7 @@
 
 #### Tag
 
-1. Create Tag
+1. CREATE TAG
   
     **endpoint:** /api/tags/
     
@@ -46,7 +46,7 @@
     + title (string, required, unique)
 
     
-2. Delete Tag
+2. DELETE TAG
   
     **endpoint:** /api/tags/:id
     
@@ -55,7 +55,7 @@
     **request-params**:
     + id (string)
     
-3. Add Tag to a Bookmark
+3. ADD TAG TO A BOOKMARK
 
     **endpoint:** /api/bookmarks/addtag
     
@@ -65,7 +65,7 @@
     + bookmarkId (string, required)
     + tagId (string, required)
 
-4. Remove a Tag from a certain Bookmark
+4. REMOVE A TAG FROM A CERTAIN BOOKMARK
 
     **endpoint:** /api/bookmarks/removetag/:id
     
@@ -78,14 +78,14 @@
 
 #### Display
 
-1. Retrieve all Bookmarks
+1. RETREIVE ALL BOOKMARKS
   
     **endpoint:** /api/bookmarks/
     
     **method:** get
 
     
-2. Retrieve all tags
+2. RETREIVE ALL TAGS
   
     **endpoint:** /api/bookmarks/:id
     
