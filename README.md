@@ -34,7 +34,7 @@
     
 - - -
 
-#### Tag
+#### TAG
 
 1. CREATE TAG
   
@@ -76,7 +76,7 @@
 
 - - -
 
-#### Display
+#### DISPLAY
 
 1. RETREIVE ALL BOOKMARKS
   
