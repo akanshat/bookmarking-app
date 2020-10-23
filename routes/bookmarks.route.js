@@ -45,6 +45,8 @@ router.get("/", async (req, res) => {
 router.put("/addtag", async (req, res) => {
   try {
     const { bookmarkId, tagId } = req.body;
+    if (!bookmarkId) throw new Error("bookmarkId is required!");
+    if (!tagId) throw new Error("tagId is required!");
 
     const tagExists = await Tag.findById({ _id: tagId });
     console.log("tagExists", tagExists);
@@ -54,6 +56,7 @@ router.put("/addtag", async (req, res) => {
     const updateBookmark = await Bookmark.findByIdAndUpdate({
       _id: bookmarkId,
       tagId,
+      updatedAt: Math.floor(new Date().getTime() / 1000),
     });
     return res.status(200).json(updateBookmark);
   } catch (err) {
@@ -67,6 +70,7 @@ router.put("/removetag/:id", async (req, res) => {
     const removeTagFromBookmark = await Bookmark.findOneAndUpdate({
       _id: id,
       tagId: null,
+      updatedAt: Math.floor(new Date().getTime() / 1000),
     });
     return res.status(200).json(removeTagFromBookmark);
   } catch (err) {
