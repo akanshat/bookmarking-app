@@ -13,7 +13,6 @@ router.post("/", async (req, res) => {
     if (!tagId) tempTagId = null;
     else {
       const tagExists = await Tag.find({ _id: tagId });
-      console.log("tagExists", tagExists);
 
       if (!tagExists) throw new Error("Tag does not exist!");
     }
@@ -49,14 +48,15 @@ router.put("/addtag", async (req, res) => {
     if (!tagId) throw new Error("tagId is required!");
 
     const tagExists = await Tag.findById({ _id: tagId });
-    console.log("tagExists", tagExists);
 
     if (!tagExists) throw new Error("Tag does not exist!");
+
+    const updateTime = Math.floor(new Date().getTime() / 1000);
 
     const updateBookmark = await Bookmark.findByIdAndUpdate({
       _id: bookmarkId,
       tagId,
-      updatedAt: Math.floor(new Date().getTime() / 1000),
+      updatedAt: updateTime,
     });
     return res.status(200).json(updateBookmark);
   } catch (err) {
@@ -67,10 +67,12 @@ router.put("/addtag", async (req, res) => {
 router.put("/removetag/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    const updateTime = Math.floor(new Date().getTime() / 1000);
+
     const removeTagFromBookmark = await Bookmark.findOneAndUpdate({
       _id: id,
       tagId: null,
-      updatedAt: Math.floor(new Date().getTime() / 1000),
+      updatedAt: updateTime,
     });
     return res.status(200).json(removeTagFromBookmark);
   } catch (err) {
